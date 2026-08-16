@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { dashboardData } = require('./data');
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -16,20 +17,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.get('/api/dashboard', (req, res) => {
-  res.json({
-    summary: {
-      totalProducts: 1284,
-      lowStock: 18,
-      todaysSales: 12450,
-      activeBatches: 96,
-    },
-    priorities: [
-      'Review expiry alerts',
-      'Approve purchase orders',
-      'Verify returns and damaged items',
-      'Close shift cash reconciliation',
-    ],
-  });
+  res.json(dashboardData);
 });
 
 app.listen(port, () => {
