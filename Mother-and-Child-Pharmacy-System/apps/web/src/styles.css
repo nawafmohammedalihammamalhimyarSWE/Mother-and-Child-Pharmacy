@@ -289,6 +289,56 @@ h1 {
   color: #cbd5e1;
 }
 
+.ops-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.list-stack,
+.pos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list-row,
+.pos-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.list-row:last-child,
+.pos-row:last-child {
+  border-bottom: none;
+}
+
+.list-row div,
+.pos-row div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.align-right {
+  align-items: flex-end;
+}
+
+.list-row span,
+.pos-row span {
+  color: #cbd5e1;
+  font-size: 0.82rem;
+}
+
+.primary-btn.small {
+  padding: 8px 12px;
+  font-size: 0.76rem;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
