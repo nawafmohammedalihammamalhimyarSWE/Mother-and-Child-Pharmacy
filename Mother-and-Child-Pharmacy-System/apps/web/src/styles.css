@@ -353,6 +353,10 @@ h1 {
   border-bottom: none;
 }
 
+.batch-panel {
+  margin-top: 24px;
+}
+
 .primary-btn.small {
   padding: 8px 12px;
   font-size: 0.76rem;

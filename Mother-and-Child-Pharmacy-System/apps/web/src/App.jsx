@@ -7,9 +7,11 @@ import PurchaseOrdersPanel from './components/PurchaseOrdersPanel';
 import PosPanel from './components/PosPanel';
 import ReturnsPanel from './components/ReturnsPanel';
 import AuditLogPanel from './components/AuditLogPanel';
+import BatchManagementPanel from './components/BatchManagementPanel';
 import { inventoryItems, alertItems, productCatalog } from './seedData';
 import { purchaseOrders, posSales } from './operationsData';
 import { returnItems, auditEntries } from './returnsData';
+import { batchData } from './batchData';
 
 const stats = [
   { label: 'Total products', value: dashboardData.summary.totalProducts.toLocaleString() },
@@ -73,6 +75,7 @@ export default function App() {
           <AuditLogPanel entries={auditEntries} />
         </section>
 
+        <BatchManagementPanel batches={batchData} />
         <InventoryTable items={inventoryItems} />
       </main>
     </div>
