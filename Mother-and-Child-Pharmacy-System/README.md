@@ -45,6 +45,9 @@
 - إنشاء BRD الأولي للصيدلية
 - إنشاء SRS الأولي لـ MVP
 - إنشاء خيارات اختيار التقنية
+- إنشاء UX Wireframes and User Flows
+- إنشاء Technical Architecture
+- إنشاء Implementation Roadmap
 
 ### قيد التنفيذ/مفتوح
 
@@ -54,14 +57,16 @@
 - تأكيد العملات والضرائب وسياسات المرتجعات والأدوية المقيدة
 - اختيار التقنية النهائية بعد Decision Matrix
 - اعتماد حالة BRD/SRS ونقلها إلى تصميم واجهات UX
+- اعتماد Routing وSecurity وAudit في المرحلة التالية
 
 ### التالي
 
 - إغلاق Gate 0 وموافقة المالك
 - استكمال Phase 1 بالتحقق الميداني ومقابلات التشغيل
 - تحسين BRD/SRS بناءً على ملاحظات المالك
-- إعداد UX/Interface وWireframes لاحقًا
-- الانتقال إلى architecture + security review + implementation planning
+- اعتماد Wireframes وUX final
+- الانتقال إلى architecture + security review + development planning
+- البدء في بناء MVP على أساس التصميم المعتمد
 
 ## قواعد ملزمة
 
