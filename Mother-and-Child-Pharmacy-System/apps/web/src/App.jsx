@@ -1,5 +1,9 @@
 import { dashboardData } from './data';
 import MetricCard from './components/MetricCard';
+import ProductCatalog from './components/ProductCatalog';
+import InventoryTable from './components/InventoryTable';
+import AlertPanel from './components/AlertPanel';
+import { inventoryItems, alertItems, productCatalog } from './seedData';
 
 const stats = [
   { label: 'Total products', value: dashboardData.summary.totalProducts.toLocaleString() },
@@ -48,49 +52,11 @@ export default function App() {
             </ul>
           </article>
 
-          <article className="panel">
-            <h2>Batch risk watch</h2>
-            <div className="risk-row">
-              <span>Expiring this week</span>
-              <strong>14 batches</strong>
-            </div>
-            <div className="risk-row">
-              <span>Near stockout</span>
-              <strong>7 SKUs</strong>
-            </div>
-            <div className="risk-row">
-              <span>Returns awaiting review</span>
-              <strong>5 cases</strong>
-            </div>
-          </article>
+          <AlertPanel items={alertItems} />
         </section>
 
-        <section className="panel table-panel">
-          <div className="table-header">
-            <h2>Stock overview</h2>
-            <button className="secondary-btn">View all</button>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>SKU</th>
-                <th>Product</th>
-                <th>In stock</th>
-                <th>Expiry</th>
-              </tr>
-            </thead>
-            <tbody>
-              {dashboardData.products.map((product) => (
-                <tr key={product.sku}>
-                  <td>{product.sku}</td>
-                  <td>{product.name}</td>
-                  <td>{product.stock}</td>
-                  <td>{product.expiry}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+        <ProductCatalog items={productCatalog} />
+        <InventoryTable items={inventoryItems} />
       </main>
     </div>
   );
