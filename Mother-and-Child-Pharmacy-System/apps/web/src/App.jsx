@@ -13,6 +13,7 @@ import ImportReviewPanel from './components/ImportReviewPanel';
 import ShiftCashPanel from './components/ShiftCashPanel';
 import ReportsPanel from './components/ReportsPanel';
 import PosWorkflow from './components/PosWorkflow';
+import PrescriptionPanel from './components/PrescriptionPanel';
 import { inventoryItems, alertItems, productCatalog } from './seedData';
 import { purchaseOrders, posSales } from './operationsData';
 import { returnItems, auditEntries } from './returnsData';
@@ -26,6 +27,12 @@ const stats = [
   { label: 'Low stock', value: dashboardData.summary.lowStock.toString() },
   { label: "Today's sales", value: `SAR ${dashboardData.summary.todaysSales.toLocaleString()}` },
   { label: 'Active batches', value: dashboardData.summary.activeBatches.toString() },
+];
+
+const prescriptions = [
+  { id: 1, patient: 'Lina Al-Mansoor', medication: 'Amoxicillin 500mg', qty: 10, status: 'Ready for dispense' },
+  { id: 2, patient: 'Yousef Nasser', medication: 'Vitamin D3 2000IU', qty: 30, status: 'Awaiting review' },
+  { id: 3, patient: 'Sara Rahman', medication: 'Cough syrup pediatric', qty: 2, status: 'Approved' },
 ];
 
 export default function App() {
@@ -76,8 +83,13 @@ export default function App() {
         <ProductCatalog items={productCatalog} />
 
         <section className="ops-grid">
+          <PrescriptionPanel prescriptions={prescriptions} />
           <PurchaseOrdersPanel orders={purchaseOrders} />
+        </section>
+
+        <section className="ops-grid">
           <PosPanel sales={posSales} />
+          <SupplierPanel suppliers={suppliers} />
         </section>
 
         <section className="ops-grid lower-grid">
