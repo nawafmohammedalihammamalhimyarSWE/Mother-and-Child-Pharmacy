@@ -296,8 +296,13 @@ h1 {
   margin-top: 24px;
 }
 
+.lower-grid {
+  margin-bottom: 24px;
+}
+
 .list-stack,
-.pos-list {
+.pos-list,
+.audit-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -318,7 +323,8 @@ h1 {
 }
 
 .list-row div,
-.pos-row div {
+.pos-row div,
+.audit-row div {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -329,9 +335,22 @@ h1 {
 }
 
 .list-row span,
-.pos-row span {
+.pos-row span,
+.audit-row span {
   color: #cbd5e1;
   font-size: 0.82rem;
+}
+
+.audit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.audit-row:last-child {
+  border-bottom: none;
 }
 
 .primary-btn.small {
