@@ -5,8 +5,11 @@ import InventoryTable from './components/InventoryTable';
 import AlertPanel from './components/AlertPanel';
 import PurchaseOrdersPanel from './components/PurchaseOrdersPanel';
 import PosPanel from './components/PosPanel';
+import ReturnsPanel from './components/ReturnsPanel';
+import AuditLogPanel from './components/AuditLogPanel';
 import { inventoryItems, alertItems, productCatalog } from './seedData';
 import { purchaseOrders, posSales } from './operationsData';
+import { returnItems, auditEntries } from './returnsData';
 
 const stats = [
   { label: 'Total products', value: dashboardData.summary.totalProducts.toLocaleString() },
@@ -63,6 +66,11 @@ export default function App() {
         <section className="ops-grid">
           <PurchaseOrdersPanel orders={purchaseOrders} />
           <PosPanel sales={posSales} />
+        </section>
+
+        <section className="ops-grid lower-grid">
+          <ReturnsPanel returns={returnItems} />
+          <AuditLogPanel entries={auditEntries} />
         </section>
 
         <InventoryTable items={inventoryItems} />
