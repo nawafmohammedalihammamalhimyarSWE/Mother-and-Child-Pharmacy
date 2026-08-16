@@ -10,11 +10,14 @@ import AuditLogPanel from './components/AuditLogPanel';
 import BatchManagementPanel from './components/BatchManagementPanel';
 import SupplierPanel from './components/SupplierPanel';
 import ImportReviewPanel from './components/ImportReviewPanel';
+import ShiftCashPanel from './components/ShiftCashPanel';
+import ReportsPanel from './components/ReportsPanel';
 import { inventoryItems, alertItems, productCatalog } from './seedData';
 import { purchaseOrders, posSales } from './operationsData';
 import { returnItems, auditEntries } from './returnsData';
 import { batchData } from './batchData';
 import { suppliers, imports } from './supplierData';
+import { shiftEntries, reports } from './financeData';
 
 const stats = [
   { label: 'Total products', value: dashboardData.summary.totalProducts.toLocaleString() },
@@ -83,6 +86,11 @@ export default function App() {
         <section className="ops-grid lower-grid">
           <SupplierPanel suppliers={suppliers} />
           <ImportReviewPanel imports={imports} />
+        </section>
+
+        <section className="ops-grid lower-grid">
+          <ShiftCashPanel entries={shiftEntries} />
+          <ReportsPanel reports={reports} />
         </section>
 
         <InventoryTable items={inventoryItems} />
