@@ -48,6 +48,8 @@
 - إنشاء UX Wireframes and User Flows
 - إنشاء Technical Architecture
 - إنشاء Implementation Roadmap
+- إنشاء Detailed Design and Data Model
+- إنشاء Implementation Task Breakdown
 
 ### قيد التنفيذ/مفتوح
 
@@ -58,6 +60,7 @@
 - اختيار التقنية النهائية بعد Decision Matrix
 - اعتماد حالة BRD/SRS ونقلها إلى تصميم واجهات UX
 - اعتماد Routing وSecurity وAudit في المرحلة التالية
+- توحيد تفاصيل التنفيذ مع فريق التطوير
 
 ### التالي
 
@@ -67,6 +70,7 @@
 - اعتماد Wireframes وUX final
 - الانتقال إلى architecture + security review + development planning
 - البدء في بناء MVP على أساس التصميم المعتمد
+- تقسيم المهام إلى سبرنتات تنفيذية ومراجعة أولية
 
 ## قواعد ملزمة
 
