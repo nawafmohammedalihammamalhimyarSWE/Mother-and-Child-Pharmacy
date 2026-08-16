@@ -3,7 +3,10 @@ import MetricCard from './components/MetricCard';
 import ProductCatalog from './components/ProductCatalog';
 import InventoryTable from './components/InventoryTable';
 import AlertPanel from './components/AlertPanel';
+import PurchaseOrdersPanel from './components/PurchaseOrdersPanel';
+import PosPanel from './components/PosPanel';
 import { inventoryItems, alertItems, productCatalog } from './seedData';
+import { purchaseOrders, posSales } from './operationsData';
 
 const stats = [
   { label: 'Total products', value: dashboardData.summary.totalProducts.toLocaleString() },
@@ -56,6 +59,12 @@ export default function App() {
         </section>
 
         <ProductCatalog items={productCatalog} />
+
+        <section className="ops-grid">
+          <PurchaseOrdersPanel orders={purchaseOrders} />
+          <PosPanel sales={posSales} />
+        </section>
+
         <InventoryTable items={inventoryItems} />
       </main>
     </div>
