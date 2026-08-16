@@ -364,9 +364,152 @@ h1 {
   color: #fcd34d;
 }
 
-.primary-btn.small {
+.primary-btn.small,
+.secondary-btn.small {
   padding: 8px 12px;
   font-size: 0.76rem;
+}
+
+.pos-workflow {
+  margin-bottom: 24px;
+}
+
+.pos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pos-meta {
+  display: flex;
+  gap: 12px;
+  color: #cbd5e1;
+  font-size: 0.82rem;
+}
+
+.pos-layout {
+  display: grid;
+  grid-template-columns: 1.7fr 0.9fr;
+  gap: 20px;
+}
+
+.search-panel,
+.cart-panel {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: #cbd5e1;
+  font-size: 0.82rem;
+}
+
+.search-box input {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #f8fafc;
+  padding: 12px 14px;
+  font-size: 1rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.product-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.product-title-row,
+.product-footer,
+.total-row,
+.cart-header,
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-card p {
+  margin: 8px 0;
+  color: #93c5fd;
+  font-size: 0.82rem;
+}
+
+.product-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #cbd5e1;
+  font-size: 0.72rem;
+  margin-bottom: 14px;
+}
+
+.cart-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-header {
+  margin-bottom: 12px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.cart-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.cart-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.totals-box {
+  margin-top: auto;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  padding-top: 12px;
+}
+
+.total-row {
+  padding: 6px 0;
+  color: #e2e8f0;
+}
+
+.grand-total {
+  font-size: 1.1rem;
+  color: #f8fafc;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  margin-top: 6px;
+  padding-top: 10px;
+}
+
+.payment-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 16px;
 }
 
 table {

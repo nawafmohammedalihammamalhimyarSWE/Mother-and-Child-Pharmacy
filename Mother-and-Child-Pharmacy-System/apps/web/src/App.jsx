@@ -12,12 +12,14 @@ import SupplierPanel from './components/SupplierPanel';
 import ImportReviewPanel from './components/ImportReviewPanel';
 import ShiftCashPanel from './components/ShiftCashPanel';
 import ReportsPanel from './components/ReportsPanel';
+import PosWorkflow from './components/PosWorkflow';
 import { inventoryItems, alertItems, productCatalog } from './seedData';
 import { purchaseOrders, posSales } from './operationsData';
 import { returnItems, auditEntries } from './returnsData';
 import { batchData } from './batchData';
 import { suppliers, imports } from './supplierData';
 import { shiftEntries, reports } from './financeData';
+import { posProducts, posCart, cashier } from './posData';
 
 const stats = [
   { label: 'Total products', value: dashboardData.summary.totalProducts.toLocaleString() },
@@ -55,6 +57,8 @@ export default function App() {
             <MetricCard key={stat.label} label={stat.label} value={stat.value} />
           ))}
         </section>
+
+        <PosWorkflow products={posProducts} cart={posCart} cashier={cashier} />
 
         <section className="content-grid">
           <article className="panel">
