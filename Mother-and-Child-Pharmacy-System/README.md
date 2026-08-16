@@ -20,6 +20,10 @@
 ## بنية المشروع
 
 - `docs/phase-0/`: الرؤية والاكتشاف.
+- `docs/phase-1/`: تحليل العمليات وقائمة قرارات المالك.
+- `docs/phase-2/`: BRD وSRS.
+- `docs/phase-3/`: خطة التنفيذ والمرحلات.
+- `docs/phase-4/`: التصميم التفصيلي ونموذج البيانات.
 - `docs/registers/`: القرارات والافتراضات والمخاطر والتبعيات.
 - `docs/scenarios/`: سيناريوهات الأعمال الذهبية الأولية.
 - `docs/architecture/`: مخطط العمارة الأولي والحدود في MVP.
@@ -30,6 +34,7 @@
 - `source-material/catalog/product-images/`: صور الأدوية، غير متوفرة حاليًا.
 - `source-material/brand/logo/`: الشعار المعتمد، غير متوفر حاليًا.
 - `source-material/brand/pharmacy-photos/`: صور الصيدلية، غير متوفرة حاليًا.
+- `project-structure.md`: هيكل المشروع المقترح لتنفيذ النظام.
 
 ## حالة العمل الحالية
 
@@ -85,3 +90,5 @@
 ## الخطوة التالية
 
 مراجعة `docs/phase-0/PHASE-0-PRODUCT-DISCOVERY-AND-VISION.md` والإجابة عن `docs/registers/OWNER-DECISIONS-REQUIRED.md` قبل إغلاق Gate 0.
+
+وبعد اعتماد Gate 0، ينتقل المشروع إلى التنفيذ الفعلي باستخدام الهيكل الموضح في `project-structure.md`.
