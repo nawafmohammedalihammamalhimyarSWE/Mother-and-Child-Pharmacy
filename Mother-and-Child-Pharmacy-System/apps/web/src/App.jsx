@@ -14,6 +14,9 @@ import ShiftCashPanel from './components/ShiftCashPanel';
 import ReportsPanel from './components/ReportsPanel';
 import PosWorkflow from './components/PosWorkflow';
 import PrescriptionPanel from './components/PrescriptionPanel';
+import ProductDetailPanel from './components/ProductDetailPanel';
+import ReturnRefundPanel from './components/ReturnRefundPanel';
+import ShiftClosePanel from './components/ShiftClosePanel';
 import { inventoryItems, alertItems, productCatalog } from './seedData';
 import { purchaseOrders, posSales } from './operationsData';
 import { returnItems, auditEntries } from './returnsData';
@@ -34,6 +37,24 @@ const prescriptions = [
   { id: 2, patient: 'Yousef Nasser', medication: 'Vitamin D3 2000IU', qty: 30, status: 'Awaiting review' },
   { id: 3, patient: 'Sara Rahman', medication: 'Cough syrup pediatric', qty: 2, status: 'Approved' },
 ];
+
+const productDetails = [
+  { id: 1, name: 'Panadol Extra', batch: 'PAN-2041', expiry: '2027-04-12', location: 'A1-04', qty: 62 },
+  { id: 2, name: 'Zinc Plus', batch: 'ZIN-8702', expiry: '2026-12-10', location: 'B2-11', qty: 18 },
+  { id: 3, name: 'Cough Syrup', batch: 'COU-2109', expiry: '2026-09-20', location: 'C4-03', qty: 9 },
+];
+
+const returnItems = [
+  { id: 1, customer: 'Ahmed Faris', product: 'Naproxen', reason: 'Wrong strength', amount: 42 },
+  { id: 2, customer: 'Najla Salem', product: 'Paracetamol', reason: 'Expired batch', amount: 18 },
+];
+
+const shiftSummary = {
+  openingDate: '2026-08-17 08:00',
+  openingCash: 1200,
+  netSales: 6425,
+  drawer: 7425,
+};
 
 export default function App() {
   return (
@@ -84,12 +105,22 @@ export default function App() {
 
         <section className="ops-grid">
           <PrescriptionPanel prescriptions={prescriptions} />
+          <ProductDetailPanel details={productDetails} />
+        </section>
+
+        <section className="ops-grid">
           <PurchaseOrdersPanel orders={purchaseOrders} />
+          <ReturnRefundPanel returns={returnItems} />
         </section>
 
         <section className="ops-grid">
           <PosPanel sales={posSales} />
+          <ShiftClosePanel summary={shiftSummary} />
+        </section>
+
+        <section className="ops-grid">
           <SupplierPanel suppliers={suppliers} />
+          <ReportsPanel reports={reports} />
         </section>
 
         <section className="ops-grid lower-grid">
