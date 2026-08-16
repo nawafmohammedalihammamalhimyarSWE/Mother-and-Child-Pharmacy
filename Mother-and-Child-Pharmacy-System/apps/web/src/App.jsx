@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import { dashboardData } from './data';
 import MetricCard from './components/MetricCard';
 import ProductCatalog from './components/ProductCatalog';
@@ -25,12 +26,15 @@ import { suppliers, imports } from './supplierData';
 import { shiftEntries, reports } from './financeData';
 import { posProducts, posCart, cashier } from './posData';
 
-const stats = [
-  { label: 'Total products', value: dashboardData.summary.totalProducts.toLocaleString() },
-  { label: 'Low stock', value: dashboardData.summary.lowStock.toString() },
-  { label: "Today's sales", value: `SAR ${dashboardData.summary.todaysSales.toLocaleString()}` },
-  { label: 'Active batches', value: dashboardData.summary.activeBatches.toString() },
-];
+const fetchDashboard = async () => {
+  const response = await fetch('/api/dashboard');
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch dashboard data');
+  }
+
+  return response.json();
+};
 
 const prescriptions = [
   { id: 1, patient: 'Lina Al-Mansoor', medication: 'Amoxicillin 500mg', qty: 10, status: 'Ready for dispense' },
@@ -57,6 +61,46 @@ const shiftSummary = {
 };
 
 export default function App() {
+  const [dashboard, setDashboard] = useState(dashboardData);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadDashboard = async () => {
+      try {
+        const data = await fetchDashboard();
+        if (active) {
+          setDashboard(data);
+        }
+      } catch (error) {
+        if (active) {
+          setDashboard(dashboardData);
+        }
+      } finally {
+        if (active) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadDashboard();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const summary = dashboard?.summary ?? dashboardData.summary;
+  const priorities = dashboard?.priorities ?? dashboardData.priorities;
+
+  const stats = [
+    { label: 'Total products', value: summary.totalProducts.toLocaleString() },
+    { label: 'Low stock', value: summary.lowStock.toString() },
+    { label: "Today's sales", value: `SAR ${summary.todaysSales.toLocaleString()}` },
+    { label: 'Active batches', value: summary.activeBatches.toString() },
+  ];
+
   return (
     <div className="app-shell">
       <aside className="sidebar">
@@ -80,6 +124,8 @@ export default function App() {
           <button className="primary-btn">New sale</button>
         </header>
 
+        {isLoading && <p className="status-text">Loading pharmacy dashboard…</p>}
+
         <section className="stats-grid">
           {stats.map((stat) => (
             <MetricCard key={stat.label} label={stat.label} value={stat.value} />
@@ -92,7 +138,7 @@ export default function App() {
           <article className="panel">
             <h2>Priority actions</h2>
             <ul className="task-list">
-              {dashboardData.priorities.map((task) => (
+              {priorities.map((task) => (
                 <li key={task}>{task}</li>
               ))}
             </ul>
