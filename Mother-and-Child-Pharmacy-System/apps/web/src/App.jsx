@@ -63,6 +63,35 @@ const shiftSummary = {
 export default function App() {
   const [dashboard, setDashboard] = useState(dashboardData);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeView, setActiveView] = useState('Dashboard');
+
+  const navItems = [
+    'Dashboard',
+    'Catalog',
+    'Purchases',
+    'Inventory',
+    'POS',
+    'Reports',
+  ];
+
+  const navigateToSection = (label) => {
+    setActiveView(label);
+
+    const sectionIdMap = {
+      Dashboard: 'dashboard-section',
+      Catalog: 'catalog-section',
+      Purchases: 'purchases-section',
+      Inventory: 'inventory-section',
+      POS: 'pos-section',
+      Reports: 'reports-section',
+    };
+
+    const targetId = sectionIdMap[label];
+    const element = targetId ? document.getElementById(targetId) : null;
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   useEffect(() => {
     let active = true;
@@ -106,17 +135,21 @@ export default function App() {
       <aside className="sidebar">
         <div className="brand">Mother & Child</div>
         <nav>
-          <a className="nav-item active" href="#">Dashboard</a>
-          <a className="nav-item" href="#">Catalog</a>
-          <a className="nav-item" href="#">Purchases</a>
-          <a className="nav-item" href="#">Inventory</a>
-          <a className="nav-item" href="#">POS</a>
-          <a className="nav-item" href="#">Reports</a>
+          {navItems.map((item) => (
+            <button
+              key={item}
+              type="button"
+              className={`nav-item ${activeView === item ? 'active' : ''}`}
+              onClick={() => navigateToSection(item)}
+            >
+              {item}
+            </button>
+          ))}
         </nav>
       </aside>
 
       <main className="main-panel">
-        <header className="topbar">
+        <header id="dashboard-section" className="topbar">
           <div>
             <p className="eyebrow">Pharmacy operations</p>
             <h1>Operations dashboard</h1>
@@ -132,7 +165,9 @@ export default function App() {
           ))}
         </section>
 
-        <PosWorkflow products={posProducts} cart={posCart} cashier={cashier} />
+        <div id="pos-section">
+          <PosWorkflow products={posProducts} cart={posCart} cashier={cashier} />
+        </div>
 
         <section className="content-grid">
           <article className="panel">
@@ -147,9 +182,11 @@ export default function App() {
           <AlertPanel items={alertItems} />
         </section>
 
-        <ProductCatalog items={productCatalog} />
+        <div id="catalog-section">
+          <ProductCatalog items={productCatalog} />
+        </div>
 
-        <section className="ops-grid">
+        <section id="purchases-section" className="ops-grid">
           <PrescriptionPanel prescriptions={prescriptions} />
           <ProductDetailPanel details={productDetails} />
         </section>
@@ -183,10 +220,14 @@ export default function App() {
 
         <section className="ops-grid lower-grid">
           <ShiftCashPanel entries={shiftEntries} />
-          <ReportsPanel reports={reports} />
+          <div id="reports-section">
+            <ReportsPanel reports={reports} />
+          </div>
         </section>
 
-        <InventoryTable items={inventoryItems} />
+        <div id="inventory-section">
+          <InventoryTable items={inventoryItems} />
+        </div>
       </main>
     </div>
   );
