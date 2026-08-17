@@ -20,7 +20,7 @@ import ReturnRefundPanel from './components/ReturnRefundPanel';
 import ShiftClosePanel from './components/ShiftClosePanel';
 import { inventoryItems, alertItems, productCatalog } from './seedData';
 import { purchaseOrders, posSales } from './operationsData';
-import { returnItems, auditEntries } from './returnsData';
+import { returnItems as returnEntries, auditEntries } from './returnsData';
 import { batchData } from './batchData';
 import { suppliers, imports } from './supplierData';
 import { shiftEntries, reports } from './financeData';
@@ -48,7 +48,7 @@ const productDetails = [
   { id: 3, name: 'Cough Syrup', batch: 'COU-2109', expiry: '2026-09-20', location: 'C4-03', qty: 9 },
 ];
 
-const returnItems = [
+const refundReturns = [
   { id: 1, customer: 'Ahmed Faris', product: 'Naproxen', reason: 'Wrong strength', amount: 42 },
   { id: 2, customer: 'Najla Salem', product: 'Paracetamol', reason: 'Expired batch', amount: 18 },
 ];
@@ -156,7 +156,7 @@ export default function App() {
 
         <section className="ops-grid">
           <PurchaseOrdersPanel orders={purchaseOrders} />
-          <ReturnRefundPanel returns={returnItems} />
+          <ReturnRefundPanel returns={refundReturns} />
         </section>
 
         <section className="ops-grid">
@@ -170,7 +170,7 @@ export default function App() {
         </section>
 
         <section className="ops-grid lower-grid">
-          <ReturnsPanel returns={returnItems} />
+          <ReturnsPanel returns={returnEntries} />
           <AuditLogPanel entries={auditEntries} />
         </section>
 
